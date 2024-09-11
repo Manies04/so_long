@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 01:27:15 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/04 16:44:08 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:01:21 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,11 @@ void	initiator(t_d *d, int x, int y, int i)
 		mlx_put_image_to_window(d->mlx, d->win,
 			d->img.enemy[0], x * 128, y * 128);
 	}
+}
+
+void	free_all(t_d *d)
+{
+	free(d->assets.coins_existance);
+	free(d->assets.c_pos);
+	free(d->assets.enemies_pos);
 }

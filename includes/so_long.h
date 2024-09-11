@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:37:17 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/05 18:32:08 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:58:44 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_d
 void	background(t_d *d);
 void	add_to_map( t_d *d);
 void	initiator(t_d *d, int x, int y, int i);
+void	free_all(t_d *d);
 
 //checkers.c
 void	arg_checker(int argc, t_d *d);

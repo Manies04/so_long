@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:46:41 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/04 16:47:43 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:40:58 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	initializer(t_d *d)
 	int	window_width;
 	int	window_height;
 
+	//ft_memset(d, 0, sizeof(t_d));
 	window_width = d->map.width * 128;
 	window_height = d->map.height * 128;
 	d->mlx = mlx_init();
@@ -34,12 +35,6 @@ void	initializer(t_d *d)
 	image_coins(d);
 	d->img.exit = mlx_xpm_file_to_image(d->mlx, "textures/Exit.xpm",
 			&d->width, &d->height);
-	if (!d->img.wall || !d->img.floor || !d->img.p || !d->img.enemy
-		|| !d->img.coin)
-	{
-		write(1, "Error initializing .xpm\n", 25);
-		exit(1);
-	}
 }
 
 void	struct_init(t_d *d)
@@ -67,6 +62,7 @@ void	struct_init(t_d *d)
 int	key_press(int keycode, t_d *d)
 {
 	if (keycode == 65307)
+		free_all(&d);
 		exit(0);
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 		d->map.keycode = keycode;

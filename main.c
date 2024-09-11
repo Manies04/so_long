@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:26:47 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/05 17:27:37 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:26:40 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	main(int argc, char **argv)
 	mlx_hook(d.win, 2, 1L << 0, key_press, &d);
 	mlx_hook(d.win, 17, 0, close_window, &d);
 	mlx_loop(d.mlx);
-	return (0);
+	return (free_all(&d), 0);
 }

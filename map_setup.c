@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:53:58 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/05 19:24:47 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:56:41 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	map_copy(const char *map_name, t_d *d)
 	if (!fd || fd == -1)
 		error_handler(1);
 	line = get_next_line(fd);
-	while (++y <= d->map.height - 1)
+	while (line && (++y <= d->map.height - 1))
 	{
 		x = -1;
 		while (line[++x] != '\0')

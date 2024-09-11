@@ -6,7 +6,7 @@
 #    By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 12:42:38 by tiade-al          #+#    #+#              #
-#    Updated: 2024/08/04 16:54:09 by tiade-al         ###   ########.fr        #
+#    Updated: 2024/09/10 14:15:57 by tiade-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS	= $(SRCS:.c=.o)
 # Compiler and flags
 CC			= cc
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror -I/usr/include -Imlx_linux -g
+CFLAGS		= -Wall -Wextra -Werror -I -Imlx_linux -g
 LIBFT_PATH	= ./Libft
 LIBFT		= $(LIBFT_PATH)/libft.a
 LIBS		= -Lminilibx-linux -lmlx_Linux -L$(LIBFT_PATH) -lft -lX11 -lXext
