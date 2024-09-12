@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:46:41 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/11 15:40:58 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:01:23 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	initializer(t_d *d)
 	int	window_width;
 	int	window_height;
 
-	//ft_memset(d, 0, sizeof(t_d));
 	window_width = d->map.width * 128;
 	window_height = d->map.height * 128;
 	d->mlx = mlx_init();
@@ -41,6 +40,7 @@ void	struct_init(t_d *d)
 {
 	d->counter = 0;
 	d->map.height = 0;
+	d->map.width = 0;
 	d->assets.p = 0;
 	d->assets.exit = 0;
 	d->assets.coin = 0;
@@ -51,6 +51,7 @@ void	struct_init(t_d *d)
 	d->render.frame_time_c_e = 0.1;
 	d->render.frame_time_p = 0.035;
 	d->map.exit_found = 0;
+	d->map.keycode = 0;
 }
 
 // Callback function for key press events
@@ -62,8 +63,10 @@ void	struct_init(t_d *d)
 int	key_press(int keycode, t_d *d)
 {
 	if (keycode == 65307)
-		free_all(&d);
+	{
+		free_all(d);
 		exit(0);
+	}
 	if (keycode == 119 || keycode == 97 || keycode == 115 || keycode == 100)
 		d->map.keycode = keycode;
 	else
@@ -75,8 +78,9 @@ int	key_press(int keycode, t_d *d)
  * @param param: The pointer to the struct that contains the map
  * @return 0 if the function runs successfully
  */
-int	close_window(void)
+int	close_window(t_d *d)
 {
+	free_all(d);
 	exit(0);
 	return (0);
 }

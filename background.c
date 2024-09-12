@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 01:27:15 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/11 15:01:21 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:55:24 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	add_to_map( t_d *d)
 	while (++y < d->map.height)
 	{
 		x = 0;
-		while (d->map.mtx[y][x] != '\0')
+		while (x < d->map.width)
 		{
 			if (d->map.mtx[y][x] == '1')
 				mlx_put_image_to_window(d->mlx, d->win,
@@ -80,7 +80,41 @@ void	initiator(t_d *d, int x, int y, int i)
 
 void	free_all(t_d *d)
 {
+	int i;
+
+	i = 0;
 	free(d->assets.coins_existance);
 	free(d->assets.c_pos);
 	free(d->assets.enemies_pos);
+	mlx_destroy_image(d->mlx, d->img.wall);
+	mlx_destroy_image(d->mlx, d->img.floor);
+	mlx_destroy_image(d->mlx, d->img.exit);
+	while (i < 7)
+		mlx_destroy_image(d->mlx, d->img.p[i++]);
+	mlx_destroy_image(d->mlx, d->img.enemy[0]);
+	mlx_destroy_image(d->mlx, d->img.enemy[1]);
+	mlx_destroy_image(d->mlx, d->img.coin[0]);
+	mlx_destroy_image(d->mlx, d->img.coin[1]);
+	mlx_destroy_image(d->mlx, d->img.coin[2]);
+	mlx_destroy_image(d->mlx, d->img.coin[3]);
+	mlx_destroy_window(d->mlx,d->win);
+	clean_matrix(d);
+	mlx_destroy_display(d->mlx);
+	free(d->mlx);
+	exit(0);
+}
+
+void	clean_matrix(t_d *d)
+{
+	int i;
+
+	i = 0;
+	while (i < d->map.height)
+	{
+		free(d->map.mtx[i]);
+		free(d->map.mtx_copy[i]);
+		i++;
+	}
+	free(d->map.mtx);
+	free(d->map.mtx_copy);
 }

@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:05:00 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/04 13:58:24 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 23:39:36 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	memory_aloc(t_d *d)
 	d->map.mtx_copy = (char **)malloc(sizeof(char *) * d->map.height);
 	while (i < d->map.height)
 	{
-		d->map.mtx[i] = (char *)malloc(sizeof(char) * d->map.width);
-		d->map.mtx_copy[i] = (char *)malloc(sizeof(char) * d->map.width);
+		d->map.mtx[i] = (char *)ft_calloc(d->map.width, sizeof(char));
+		d->map.mtx_copy[i] = (char *)ft_calloc(d->map.width, sizeof(char));
 		i++;
 	}
 }

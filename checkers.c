@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:10:50 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/08/05 19:06:18 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/11 22:17:32 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	arg_checker(int argc, t_d *d)
 			|| argv[i - 3] != '.'))
 	{
 		write(1, "You must use a .ber file!!\n", 28);
+		free_all(d);
 		exit(1);
 	}
 }
@@ -51,6 +52,7 @@ void	assets_checker(t_d *d)
 	{
 		write(1, "Error in the amount of assets!!\n", 33);
 		write(1, "You need at least one p, one exit and one coin!!\n", 50);
+		free_all(d);
 		exit(1);
 	}
 }

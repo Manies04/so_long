@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:37:17 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/11 14:58:44 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:56:17 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	background(t_d *d);
 void	add_to_map( t_d *d);
 void	initiator(t_d *d, int x, int y, int i);
 void	free_all(t_d *d);
+void	clean_matrix(t_d *d);
 
 //checkers.c
 void	arg_checker(int argc, t_d *d);
@@ -125,7 +126,7 @@ void	image_enemy(t_d *d);
 void	initializer(t_d *d);
 void	struct_init(t_d *d);
 int		key_press(int keycode, t_d *d);
-int		close_window(void);
+int		close_window(t_d *d);
 
 //animation.c
 void	p_animation(t_d *d, int x, int y, int i);
