@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:46:41 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/12 16:01:23 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:30:12 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	initializer(t_d *d)
 
 void	struct_init(t_d *d)
 {
+	ft_memset(d, 0, sizeof(t_d));
 	d->counter = 0;
 	d->map.height = 0;
 	d->map.width = 0;
