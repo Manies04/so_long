@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 01:27:15 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/12 11:55:24 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:00:10 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	initiator(t_d *d, int x, int y, int i)
 
 void	free_all(t_d *d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	free(d->assets.coins_existance);
@@ -97,7 +97,7 @@ void	free_all(t_d *d)
 	mlx_destroy_image(d->mlx, d->img.coin[1]);
 	mlx_destroy_image(d->mlx, d->img.coin[2]);
 	mlx_destroy_image(d->mlx, d->img.coin[3]);
-	mlx_destroy_window(d->mlx,d->win);
+	mlx_destroy_window(d->mlx, d->win);
 	clean_matrix(d);
 	mlx_destroy_display(d->mlx);
 	free(d->mlx);
@@ -106,7 +106,7 @@ void	free_all(t_d *d)
 
 void	clean_matrix(t_d *d)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < d->map.height)

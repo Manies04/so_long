@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:37:17 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/12 11:56:17 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/18 10:55:35 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		colision_checker(t_d *d);
 int		bounderies_checker(t_d *d);
 
 //helpers.c
-void	error_handler(int error_code);
+void	error_handler(int error_code, t_d *d);
 void	counter_p_e(t_d *d, int x, int y, int i);
 void	p_animation_helper(t_d *d, int x, int y, int i);
 void	render_coins_helper(t_d *d, int j, int i);
@@ -110,7 +110,7 @@ int		combined_render(t_d *d);
 
 //map_setup.c
 void	flood_fill(t_d *d, int x, int y);
-void	map_x_y_helper(const char *map_name);
+void	map_x_y_helper(const char *map_name, t_d *d);
 void	map_x_y(const char *map_name, t_d *d);
 int		map_copy(const char *map_name, t_d *d);
 void	alloc_c_e_pos(t_d *d);

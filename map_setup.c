@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:53:58 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/11 23:56:44 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:23:02 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ void	flood_fill(t_d *d, int x, int y)
  * @param map_name: The name of the map
  * @return void
  */
-void	map_x_y_helper(const char *map_name)
+void	map_x_y_helper(const char *map_name, t_d *d)
 {
 	int		fd ;
 	char	*line;
 
 	fd = open(map_name, O_RDONLY);
 	if (!fd || fd == -1)
-		error_handler(1);
+		error_handler(1, d);
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
 		free(line);
-		error_handler(5);
+		error_handler(5, d);
 	}
 	while (line != NULL)
 	{
@@ -86,14 +86,18 @@ void	map_x_y(const char *map_name, t_d *d)
 	line_size = 0;
 	fd = open(map_name, O_RDONLY);
 	if (!fd || fd == -1)
-		error_handler(1);
+		error_handler(1, d);
 	line = get_next_line(fd);
 	d->map.width = (ft_strlen_to_no(line));
 	while (line != NULL)
 	{
 		line_size = ft_strlen_to_no(line);
 		if (line_size != d->map.width)
-			error_handler(2);
+		{
+			free(line);
+			close(fd);
+			error_handler(2, d);
+		}
 		d->map.height++;
 		free(line);
 		line = get_next_line(fd);
@@ -130,7 +134,7 @@ int	map_copy(const char *map_name, t_d *d)
 	memory_aloc(d);
 	fd = open(map_name, O_RDONLY);
 	if (!fd || fd == -1)
-		error_handler(1);
+		error_handler(1, d);
 	line = get_next_line(fd);
 	while (line && (++y <= d->map.height - 1))
 	{

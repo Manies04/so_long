@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:10:50 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/11 22:17:32 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:04:12 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	arg_checker(int argc, t_d *d)
 	i = ft_strlen(argv);
 	i--;
 	if (ft_strlen(argv) < 1 || argc < 2 || argc > 2)
-		error_handler(4);
+		error_handler(4, d);
 	else if (i >= 4 && (argv[i] != 'r'
 			|| argv[i - 1] != 'e'
 			|| argv[i - 2] != 'b'
@@ -45,6 +45,9 @@ void	arg_checker(int argc, t_d *d)
  */
 void	assets_checker(t_d *d)
 {
+	int	i;
+
+	i = 0;
 	if (d->assets.p != 1
 		|| d->assets.exit != 1
 		|| d->assets.coin < 1
@@ -52,7 +55,14 @@ void	assets_checker(t_d *d)
 	{
 		write(1, "Error in the amount of assets!!\n", 33);
 		write(1, "You need at least one p, one exit and one coin!!\n", 50);
-		free_all(d);
+		while (i < d->map.height)
+		{
+			free(d->map.mtx[i]);
+			free(d->map.mtx_copy[i]);
+			i++;
+		}
+		free(d->map.mtx);
+		free(d->map.mtx_copy);
 		exit(1);
 	}
 }
@@ -83,7 +93,7 @@ void	assets_counter(t_d *d)
 			else if (d->map.mtx[y][x] == 'X')
 				d->assets.enemy++;
 			else if (d->map.mtx[y][x] != '1' && d->map.mtx[y][x] != '0')
-				error_handler(5);
+				error_handler(5, d);
 			x++;
 		}
 		y++;
@@ -140,14 +150,14 @@ int	bounderies_checker(t_d *d)
 	{
 		if (d->map.mtx[0][x] != '1'
 			|| d->map.mtx[d->map.height - 1][x] != '1')
-			error_handler(5);
+			error_handler(5, d);
 		x++;
 	}
 	while (y < d->map.height)
 	{
 		if (d->map.mtx[y][0] != '1'
 			|| d->map.mtx[y][d->map.width - 1] != '1')
-			error_handler(5);
+			error_handler(5, d);
 		y++;
 	}
 	return (0);
