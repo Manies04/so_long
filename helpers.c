@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:00:46 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/18 12:06:25 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:57:12 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	error_handler(int error_code, t_d *d)
 	else if (error_code == 4)
 	{
 		write(1, "!!Error!!\nUse [./so_long maps/(map_name).ber]\n", 47);
-		free_all(d);
+		exit(1);
 	}
 	else if (error_code == 5)
 	{

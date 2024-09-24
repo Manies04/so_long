@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 01:27:15 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/18 15:00:10 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:44:00 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ void	initiator(t_d *d, int x, int y, int i)
 	}
 }
 
+void	free_img(t_d *d, void *img)
+{
+	if (img)
+		mlx_destroy_image(d->mlx, img);
+}
+
 void	free_all(t_d *d)
 {
 	int	i;
@@ -86,18 +92,19 @@ void	free_all(t_d *d)
 	free(d->assets.coins_existance);
 	free(d->assets.c_pos);
 	free(d->assets.enemies_pos);
-	mlx_destroy_image(d->mlx, d->img.wall);
-	mlx_destroy_image(d->mlx, d->img.floor);
-	mlx_destroy_image(d->mlx, d->img.exit);
+	free_img(d->mlx, d->img.wall);
+	free_img(d->mlx, d->img.floor);
+	free_img(d->mlx, d->img.exit);
 	while (i < 7)
-		mlx_destroy_image(d->mlx, d->img.p[i++]);
-	mlx_destroy_image(d->mlx, d->img.enemy[0]);
-	mlx_destroy_image(d->mlx, d->img.enemy[1]);
-	mlx_destroy_image(d->mlx, d->img.coin[0]);
-	mlx_destroy_image(d->mlx, d->img.coin[1]);
-	mlx_destroy_image(d->mlx, d->img.coin[2]);
-	mlx_destroy_image(d->mlx, d->img.coin[3]);
-	mlx_destroy_window(d->mlx, d->win);
+		free_img(d->mlx, d->img.p[i++]);
+	free_img(d->mlx, d->img.enemy[0]);
+	free_img(d->mlx, d->img.enemy[1]);
+	free_img(d->mlx, d->img.coin[0]);
+	free_img(d->mlx, d->img.coin[1]);
+	free_img(d->mlx, d->img.coin[2]);
+	free_img(d->mlx, d->img.coin[3]);
+	if (d->win)
+		mlx_destroy_window(d->mlx, d->win);
 	clean_matrix(d);
 	mlx_destroy_display(d->mlx);
 	free(d->mlx);

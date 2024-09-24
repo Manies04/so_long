@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:10:50 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/18 15:04:12 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:00:57 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	arg_checker(int argc, t_d *d)
 			|| argv[i - 3] != '.'))
 	{
 		write(1, "You must use a .ber file!!\n", 28);
-		free_all(d);
 		exit(1);
 	}
 }

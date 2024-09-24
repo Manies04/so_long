@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:37:17 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/18 10:55:35 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:06:56 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,8 @@ void	render(int keycode, t_d *d);
 void	render_coins(t_d *d);
 void	render_enemies(t_d *d);
 float	update_delta_time(void);
+
+//size.c
+void	check_line_size(int line_size, t_d *d, char *line, int fd);
 
 #endif

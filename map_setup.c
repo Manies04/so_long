@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:53:58 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/18 12:23:02 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:05:33 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	map_x_y_helper(const char *map_name, t_d *d)
  * @param d: The pointer to the d structure
  * @return 0 if the function runs successfully
  */
-void	map_x_y(const char *map_name, t_d *d)
+/* void	map_x_y(const char *map_name, t_d *d)
 {
 	int		fd ;
 	char	*line;
@@ -103,6 +103,31 @@ void	map_x_y(const char *map_name, t_d *d)
 		line = get_next_line(fd);
 	}
 	free(line);
+	close(fd);
+	map_copy(map_name, d);
+	assets_counter(d);
+	assets_checker(d);
+	alloc_c_e_pos(d);
+} */
+
+void	map_x_y(const char *map_name, t_d *d)
+{
+	int		fd;
+	char	*line;
+	int		line_size;
+
+	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+		error_handler(1, d);
+	line = get_next_line(fd);
+	while (line)
+	{
+		line_size = ft_strlen_to_no(line);
+		check_line_size(line_size, d, line, fd);
+		d->map.height++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	map_copy(map_name, d);
 	assets_counter(d);
