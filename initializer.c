@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:46:41 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 12:57:49 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:05:40 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initializer(t_d *d)
 	int	window_width;
 	int	window_height;
 
-	window_width =  d->map.width * 128;
+	window_width = d->map.width * 128;
 	window_height = d->map.height * 128;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window(d->mlx, window_width, window_height, "So_long");

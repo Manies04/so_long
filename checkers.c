@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:10:50 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 12:00:57 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:17:36 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	arg_checker(int argc, t_d *d)
 	argv = d->map.name;
 	i = ft_strlen(argv);
 	i--;
-	if (ft_strlen(argv) < 1 || argc < 2 || argc > 2)
+
+	if (ft_strlen(argv) < 5 || argc < 2 || argc > 2)
 		error_handler(4, d);
 	else if (i >= 4 && (argv[i] != 'r'
 			|| argv[i - 1] != 'e'

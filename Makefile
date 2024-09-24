@@ -6,58 +6,52 @@
 #    By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 12:42:38 by tiade-al          #+#    #+#              #
-#    Updated: 2024/09/24 12:50:44 by tiade-al         ###   ########.fr        #
+#    Updated: 2024/09/24 14:45:51 by tiade-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Source files
-SRCS	= main.c get_next_line.c get_next_line_utils.c animation.c \
+NAME = so_long
+
+SRC = main.c get_next_line.c get_next_line_utils.c animation.c \
 background.c checkers.c helpers.c img_resizer.c initializer.c map_setup.c size.c
 
-# Object files
-OBJS	= $(SRCS:.c=.o)
+CC = @cc
 
-# Compiler and flags
-CC			= cc
-RM			= rm -f
-CFLAGS		= -I -Imlx_linux -g -Wall -Wextra -Werror 
-LIBFT_PATH	= ./Libft
-LIBFT		= $(LIBFT_PATH)/libft.a
-MLX = ./minilibx-linux
-LIBS		= -Lminilibx-linux -lmlx_Linux -L$(LIBFT_PATH) -lft -lX11 -lXext
+CFLAGS = -Wall -Wextra -Werror -g
+MLXFLAGS = -L. -lXext -L. -lX11
 
-# Output library name
-NAME	= so_long
+LIBFT_PATH = ./Libft
+LIBFT = $(LIBFT_PATH)/libft.a
 
-# Default target
-all:	$(NAME)
+MINILIBX_PATH = ./minilibx-linux
+MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
-# Compilation rule for object files
-%.o: %.c
-				$(CC) $(CFLAGS) -c $< -o $@
+OBJS = $(SRC:.c=.o)
 
-# Linking rule for the final executable
-$(NAME):	$(OBJS) $(LIBFT)
-				@ make -C $(MLX)
-				$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+all: $(NAME)
 
-# Build the Libft library
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+
 $(LIBFT):
-				$(MAKE) -C $(LIBFT_PATH)
+	@echo " [ .. ] | Compiling libft.."
+	@make -s -C $(LIBFT_PATH)
+	@echo " [ OK ] | Libft ready!"
 
-# Clean up object files
+$(MINILIBX):
+	@echo " [ .. ] | Compiling minilibx.."
+	@make -s -C $(MINILIBX_PATH)
+	@echo " [ OK ] | Minilibx ready!"
+
 clean:
-				$(RM) $(OBJS)
-				$(MAKE) -C $(LIBFT_PATH) clean
+	@rm -f $(OBJS)
+	@echo "object files removed."
+	
+fclean: clean
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT_PATH)
+	@echo "all files created were removed."
 
-# Clean up all generated files
-fclean:	clean
-				@ make clean -C $(MLX)
-				$(RM) $(NAME)
-				$(MAKE) -C $(LIBFT_PATH) fclean
+re: fclean all
 
-# Rebuild everything
-re:	fclean all
-
-# Phony targets
-.PHONY:	all clean fclean re libft
+.PHONY:	all clean fclean re
