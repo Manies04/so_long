@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:05:23 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/25 19:07:32 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:14:39 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	check_line_size(int line_size, t_d *d, char *line, int fd)
 		error_handler(2, d);
 	}
 }
+
 void	flood_clean(t_d *d)
 {
 	free(d->assets.coins_existance);
