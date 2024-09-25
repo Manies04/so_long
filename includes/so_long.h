@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:37:17 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 15:19:04 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:56:21 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,6 @@ float	update_delta_time(void);
 
 //size.c
 void	check_line_size(int line_size, t_d *d, char *line, int fd);
+void	flood_clean(t_d *d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 14:00:46 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 16:19:11 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:03:32 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	error_handler(int error_code, t_d *d)
 	else if (error_code == 3)
 	{
 		write(1, "Error, map not winnable\n", 25);
-		free_all(d);
+		flood_clean(d);
 	}
 	else if (error_code == 4)
 	{

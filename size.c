@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 19:05:23 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 15:18:57 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:07:32 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,12 @@ void	check_line_size(int line_size, t_d *d, char *line, int fd)
 		close(fd);
 		error_handler(2, d);
 	}
+}
+void	flood_clean(t_d *d)
+{
+	free(d->assets.coins_existance);
+	free(d->assets.c_pos);
+	free(d->assets.enemies_pos);
+	clean_matrix(d);
+	exit(0);
 }
