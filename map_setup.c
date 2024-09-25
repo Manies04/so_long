@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 17:53:58 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/22 19:05:33 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:53:11 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,6 @@ void	map_x_y_helper(const char *map_name, t_d *d)
  * @param d: The pointer to the d structure
  * @return 0 if the function runs successfully
  */
-/* void	map_x_y(const char *map_name, t_d *d)
-{
-	int		fd ;
-	char	*line;
-	int		line_size;
-
-	line_size = 0;
-	fd = open(map_name, O_RDONLY);
-	if (!fd || fd == -1)
-		error_handler(1, d);
-	line = get_next_line(fd);
-	d->map.width = (ft_strlen_to_no(line));
-	while (line != NULL)
-	{
-		line_size = ft_strlen_to_no(line);
-		if (line_size != d->map.width)
-		{
-			free(line);
-			close(fd);
-			error_handler(2, d);
-		}
-		d->map.height++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-	map_copy(map_name, d);
-	assets_counter(d);
-	assets_checker(d);
-	alloc_c_e_pos(d);
-} */
-
 void	map_x_y(const char *map_name, t_d *d)
 {
 	int		fd;

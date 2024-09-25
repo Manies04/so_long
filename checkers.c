@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:10:50 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 16:17:36 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:32:14 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	colision_checker(t_d *d)
 	else if (d->map.mtx[d->assets.p_pos.y][d->assets.p_pos.x] == 'X')
 	{
 		write(1, "You Lost!!\n", 11);
-		exit (1);
+		free_all(d);
 	}
 	else if (d->map.mtx[d->assets.p_pos.y][d->assets.p_pos.x] == 'C')
 	{
@@ -129,10 +129,9 @@ int	colision_checker(t_d *d)
 			&& d->assets.coin <= 0)
 	{
 		write(1, "You Won!!\n", 10);
-		exit (1);
+		free_all(d);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 /**@brief This function checks if the map has bounderies '1'

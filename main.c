@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 11:26:47 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/09/24 16:05:55 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:35:27 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		d.map.name = "";
 	arg_checker(argc, &d);
-	printf("lenna\n");
 	map_x_y_helper(argv[1], &d);
 	map_x_y(argv[1], &d);
 	coins = d.assets.coin;
